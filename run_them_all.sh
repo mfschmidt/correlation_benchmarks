@@ -8,7 +8,7 @@ echo "$DATE\n\n" > benchmarks_$DATE.log
 
 # Next, run each benchmark in turn, logging output
 set -x
-naive_numpy.py | tee -a benchmarks_$DATE.log
-naive_scipy.py | tee -a benchmarks_$DATE.log
-naive_r_corr.R | tee -a benchmarks_$DATE.log
+./naive_numpy.py | tee -a benchmarks_$DATE.log
+./naive_scipy.py | tee -a benchmarks_$DATE.log
+./naive_r_corr.R | tee -a benchmarks_$DATE.log
 
