@@ -37,7 +37,9 @@ print("Reading second vector...")
 vb = np.genfromtxt(os.path.join(my_path, "vector_b.txt"))
 
 # Run correlations with numpy and report them
-print("Running one-out correlations with numpy...")
-seconds = timeit.timeit(stmt='shorts = naive_numpy_correlations(va, vb)', number=1, globals=globals())
-actual_r = np.corrcoef(va, vb)[0,1]
-print("Calculated r = {r:0.20f} in {t:0.3f} seconds.".format(r=actual_r, t=seconds))
+for i in range(4,8):
+    n = 2**i * 1024
+    print("  Running {} one-out correlations with numpy...".format(n))
+    seconds = timeit.timeit(stmt='shorts = naive_numpy_correlations(va[:n], vb[:n])', number=1, globals=globals())
+    actual_r = np.corrcoef(va[:n], vb[:n])[0,1]
+    print("  Calculated r = {r:0.20f} in {t:0.3f} seconds.".format(r=actual_r, t=seconds))

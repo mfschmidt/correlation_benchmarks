@@ -20,9 +20,12 @@ va <- scan(file="vector_a.txt")
 print("Reading second vector...")
 vb <- scan(file="vector_b.txt")
 
-print("Running one-out correlations with R's cor function...")
-before <- Sys.time()
-short_correlations <- naive_r_corr(va, vb)
-after <- Sys.time()
-r <- cor(va, vb)
-print(paste("Calculated r = ", format(r, nsmall=20), " in ", format(after - before, nsmall=3), sep=''))
+for (j in 4:7) {
+    n <- 2^j * 1024
+    print(paste("Running", n, "one-out correlations with R's cor function..."))
+    before <- Sys.time()
+    short_correlations <- naive_r_corr(va[0:n], vb[0:n])
+    after <- Sys.time()
+    r <- cor(va[0:n], vb[0:n])
+    print(paste("Calculated r = ", format(r, nsmall=20), " in ", format(after - before, nsmall=3), sep=''))
+}
