@@ -7,4 +7,6 @@ To just run everything, clone the repository, then in bash:
 
     $ run_them_all.sh
     
+This will take somewhere in the ballpark of 15-20 minutes to run, but will obviously vary with your machine.
+
 Alternatively, you can individually run any of the executable scripts to benchmark a particular implementation of repeated one-out correlations.
